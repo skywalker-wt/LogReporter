@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C8C33DD0-D8BE-4254-BDA7-0CBD6F1BE1BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LogReporter</RootNamespace>
+    <AssemblyName>LogReporter</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Filter\BaseRowFilter.cs" />
+    <Compile Include="Filter\IRowFilter.cs" />
+    <Compile Include="LogItem.cs" />
+    <Compile Include="Operator\ContainsOp.cs" />
+    <Compile Include="Operator\NotEqualOp.cs" />
+    <Compile Include="Operator\IOperator.cs" />
+    <Compile Include="Operator\EqualOp.cs" />
+    <Compile Include="Operator\OperatorManager.cs" />
+    <Compile Include="Operator\RegexPatterns.cs" />
+    <Compile Include="Process\BackupProcess\SaveToTextFileProcess.cs" />
+    <Compile Include="Process\EmailProcess\BaseEmailBodyItem.cs" />
+    <Compile Include="Process\EmailProcess\ChartItem.cs" />
+    <Compile Include="Process\EmailProcess\ExtendChartItem.cs" />
+    <Compile Include="Process\EmailProcess\ClassifyTableItem.cs" />
+    <Compile Include="Process\EmailProcess\GroupItem.cs" />
+    <Compile Include="Process\EmailProcess\HtmlDocItem.cs" />
+    <Compile Include="Process\EmailProcess\HtmlTextItem.cs" />
+    <Compile Include="Process\EmailProcess\ImageItem.cs" />
+    <Compile Include="Process\EmailProcess\OneRowItem.cs" />
+    <Compile Include="Process\EmailProcess\TemplateItem.cs" />
+    <Compile Include="Process\BackupProcess\SaveToCSVProcess.cs" />
+    <Compile Include="Process\SendEmailProcess.cs" />
+    <Compile Include="Process\EmailProcess\TableColumnItem.cs" />
+    <Compile Include="Process\EmailProcess\TableItem.cs" />
+    <Compile Include="Process\TestEmailOutput.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReflectionGenerator.cs" />
+    <Compile Include="Reporter.cs" />
+    <Compile Include="Filter\FieldFilter.cs" />
+    <Compile Include="Rule\AutoGroupRule.cs" />
+    <Compile Include="Rule\BaseRule.cs" />
+    <Compile Include="Rule\CountRule.cs" />
+    <Compile Include="Rule\GroupRule.cs" />
+    <Compile Include="Rule\RuleFilter.cs" />
+    <Compile Include="Rule\SingleRule.cs" />
+    <Compile Include="Source\BaseSource.cs" />
+    <Compile Include="Process\BaseReportProcess.cs" />
+    <Compile Include="Source\IExtendResult.cs" />
+    <Compile Include="Source\File\TextFileSource.cs" />
+    <Compile Include="Source\SQLSource.cs" />
+    <Compile Include="Source\StoredProcedureSource.cs" />
+    <Compile Include="Source\XmlSource.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

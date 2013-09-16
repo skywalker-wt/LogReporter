@@ -1,0 +1,14 @@
+C:\Users\t-twu\Documents\My Received Files\PerfAlertMail\LogReporter\bin\Debug\LogReporter.dll
+C:\Users\t-twu\Documents\My Received Files\PerfAlertMail\LogReporter\bin\Debug\LogReporter.pdb
+C:\Users\t-twu\Documents\My Received Files\PerfAlertMail\LogReporter\obj\Debug\LogReporter.csprojResolveAssemblyReference.cache
+C:\Users\t-twu\Documents\My Received Files\PerfAlertMail\LogReporter\obj\Debug\LogReporter.dll
+C:\Users\t-twu\Documents\My Received Files\PerfAlertMail\LogReporter\obj\Debug\LogReporter.pdb
+D:\Meri-dev\Src\LTF\LogReporter\bin\Debug\LogReporter.dll
+D:\Meri-dev\Src\LTF\LogReporter\bin\Debug\LogReporter.pdb
+D:\Meri-dev\Src\LTF\LogReporter\obj\Debug\LogReporter.csprojResolveAssemblyReference.cache
+D:\Meri-dev\Src\LTF\LogReporter\obj\Debug\LogReporter.dll
+D:\Meri-dev\Src\LTF\LogReporter\obj\Debug\LogReporter.pdb
+D:\MyWorkSpace\LogReporter\bin\Debug\LogReporter.dll
+D:\MyWorkSpace\LogReporter\bin\Debug\LogReporter.pdb
+D:\MyWorkSpace\LogReporter\obj\Debug\LogReporter.dll
+D:\MyWorkSpace\LogReporter\obj\Debug\LogReporter.pdb

@@ -56,6 +56,7 @@
     <Compile Include="Operator\OperatorManager.cs" />
     <Compile Include="Operator\RegexPatterns.cs" />
     <Compile Include="Process\BackupProcess\SaveToTextFileProcess.cs" />
+    <Compile Include="Process\BackupProcess\TextItem.cs" />
     <Compile Include="Process\EmailProcess\BaseEmailBodyItem.cs" />
     <Compile Include="Process\EmailProcess\ChartItem.cs" />
     <Compile Include="Process\EmailProcess\ExtendChartItem.cs" />

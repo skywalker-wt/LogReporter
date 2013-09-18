@@ -39,6 +39,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,10 +86,15 @@
     <Compile Include="Rule\SingleRule.cs" />
     <Compile Include="Source\BaseSource.cs" />
     <Compile Include="Process\BaseReportProcess.cs" />
+    <Compile Include="Source\TextSource\IParser.cs" />
+    <Compile Include="Source\TextSource\JsonParser.cs" />
+    <Compile Include="Source\TextSource\ParserField.cs" />
+    <Compile Include="Source\TextSource\TextParser.cs" />
     <Compile Include="Source\IExtendResult.cs" />
-    <Compile Include="Source\File\TextFileSource.cs" />
+    <Compile Include="Source\TextSource\FileSource.cs" />
     <Compile Include="Source\SQLSource.cs" />
     <Compile Include="Source\StoredProcedureSource.cs" />
+    <Compile Include="Source\TextSource\WebSource.cs" />
     <Compile Include="Source\XmlSource.cs" />
   </ItemGroup>
   <ItemGroup />

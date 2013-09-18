@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogReporter.Source.TextSource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,7 @@ namespace LogReporter.Source
         #endregion
 
         #region Generator
-        public static List<ISourceGenerator> Generators = new List<ISourceGenerator>{new StoredProcedureSourceGenerator(), new ReflectionSourceGenerator(), new TextFileSourceGenerator()};
+        public static List<ISourceGenerator> Generators = new List<ISourceGenerator>{new StoredProcedureSourceGenerator(), new ReflectionSourceGenerator(), new TextFileSourceGenerator(), new WebSourceGenerator()};
 
         public static BaseSource Create(XmlNode config)
         {

@@ -12,7 +12,6 @@ namespace LogReporter.Process
 {
     public class SaveToTextFileProcess : BaseReportProcess
     {
-        public const string TAG_RULE = "Rule";
         public const string TAG_CONTENT = "Content";
         public const string TAG_ITEM = "Item";
         public const string TAG_PATH = "Path";
@@ -30,9 +29,6 @@ namespace LogReporter.Process
             {
                 switch (node.Name)
                 {
-                    case TAG_RULE:
-                        CreateRuleName(node);
-                        break;
                     case TAG_PATH:
                         CreatePath(node);
                         break;
@@ -44,11 +40,6 @@ namespace LogReporter.Process
                         break;
                 }
             }
-        }
-
-        private void CreateRuleName(XmlNode node)
-        {
-            RuleName = node.InnerText;
         }
 
         private void CreatePath(XmlNode node)

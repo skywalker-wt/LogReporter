@@ -68,4 +68,60 @@ namespace LogReporter.Source.TextSource
             }
         }
     }
+
+    public class XmlField : Field
+    {
+        internal const string ATT_PATH = "path";
+        internal const string ATT_ATT_NAME = "attr";
+        internal const string ATT_XML = "isXml";
+
+        public string Path { get; set; }
+        public string AttrName { get; set; }
+        public bool IsXml { get; set; }
+
+        public XmlField(XmlNode config) :base(config)
+        {
+            AttrName = null;
+            Path = null;
+            IsXml = false;
+
+            foreach (XmlAttribute attr in config.Attributes)
+            {
+                switch (attr.Name)
+                {
+                    case ATT_PATH:
+                        Path = attr.Value;
+                        break;
+                    case ATT_ATT_NAME:
+                        AttrName = attr.Value;
+                        break;
+                    case ATT_XML:
+                        IsXml = bool.Parse(attr.Value);
+                        break;
+                }
+            }
+        }
+
+        public string FieldValueWithDefault(XmlNode element)
+        {
+            if (Path != null)
+                element = element.SelectSingleNode(Path);
+
+            string content = "";
+            if (AttrName == null)
+            {
+                if (IsXml) content = element.InnerXml;
+                else content = element.InnerText;
+
+                if (content == null || content.Length == 0)
+                    content = Default;
+            }
+            //else
+            //{
+            //    if (element.Attributes)
+            //}
+
+            return "";
+        }
+    }
 }

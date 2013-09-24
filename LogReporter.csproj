@@ -95,6 +95,7 @@
     <Compile Include="Source\SQLSource.cs" />
     <Compile Include="Source\StoredProcedureSource.cs" />
     <Compile Include="Source\TextSource\WebSource.cs" />
+    <Compile Include="Source\TextSource\XmlParser.cs" />
     <Compile Include="Source\XmlSource.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,4 +1,5 @@
-﻿using LogReporter.Operator;
+﻿using HtmlAgilityPack;
+using LogReporter.Operator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +24,18 @@ namespace LogReporter.Source.TextSource
         {
             get
             {
+                if (PatternStr == null) return null;
+
                 if (pattern == null)
                     pattern = new Regex(PatternStr);
-
                 return pattern;
             }
         }
 
         public string FieldValueWithDefault(string logStr)
         {
+            if (RegexPattern == null) return logStr;
+
             Match match = RegexPattern.Match(logStr);
             if (!match.Success) return Default;
 
@@ -40,6 +44,7 @@ namespace LogReporter.Source.TextSource
 
         public string FieldValue(string logStr)
         {
+            if (RegexPattern == null) return logStr;
             Match match = RegexPattern.Match(logStr);
             if (!match.Success) return null;
 
@@ -49,7 +54,7 @@ namespace LogReporter.Source.TextSource
         public Field(XmlNode config)
         {
             string strFieldPattern = config.InnerText.Trim();
-            if (strFieldPattern.Length == 0) PatternStr = ".*";
+            if (strFieldPattern.Length == 0) PatternStr = null;
             else PatternStr = RegexPatterns.GetPattern(strFieldPattern);
 
             Default = "";
@@ -72,18 +77,18 @@ namespace LogReporter.Source.TextSource
     public class XmlField : Field
     {
         internal const string ATT_PATH = "path";
-        internal const string ATT_ATT_NAME = "attr";
         internal const string ATT_XML = "isXml";
+        internal const string ATT_ATTR = "attr";
 
         public string Path { get; set; }
-        public string AttrName { get; set; }
+        public string Attribute { get; set; }
         public bool IsXml { get; set; }
 
         public XmlField(XmlNode config) :base(config)
         {
-            AttrName = null;
             Path = null;
-            IsXml = false;
+            IsXml = true;
+            Attribute = null;
 
             foreach (XmlAttribute attr in config.Attributes)
             {
@@ -92,8 +97,8 @@ namespace LogReporter.Source.TextSource
                     case ATT_PATH:
                         Path = attr.Value;
                         break;
-                    case ATT_ATT_NAME:
-                        AttrName = attr.Value;
+                    case ATT_ATTR:
+                        Attribute = attr.Value;
                         break;
                     case ATT_XML:
                         IsXml = bool.Parse(attr.Value);
@@ -102,26 +107,29 @@ namespace LogReporter.Source.TextSource
             }
         }
 
-        public string FieldValueWithDefault(XmlNode element)
+        public string FieldValueWithDefault(HtmlNode element)
         {
             if (Path != null)
                 element = element.SelectSingleNode(Path);
 
             string content = "";
-            if (AttrName == null)
+
+            if (Attribute != null)
             {
-                if (IsXml) content = element.InnerXml;
-                else content = element.InnerText;
-
-                if (content == null || content.Length == 0)
-                    content = Default;
+                content = element.Attributes[Attribute].Value;
             }
-            //else
-            //{
-            //    if (element.Attributes)
-            //}
+            else
+            {
+                if (IsXml)
+                    content = element.InnerHtml;
+                else
+                    content = element.InnerText;
+            }
 
-            return "";
+            if (string.IsNullOrEmpty(content))
+                return Default;
+
+            return FieldValueWithDefault(content);
         }
     }
 }

@@ -30,6 +30,8 @@ namespace LogReporter.Source.TextSource
                     return new JsonParser(config);
                 case TYPE_TXT:
                     return new TextParser(config);
+                case TYPE_XML:
+                    return new XmlParser(config);
             }
 
             return null;

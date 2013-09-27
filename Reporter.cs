@@ -112,13 +112,13 @@ namespace LogReporter
             }
 
             // Process data using rule
-
             foreach (var source in sourceDict) {
                 foreach (var logItem in source.Value)
                 {
                     foreach (BaseRule rule in FirstClassRules.Values)
                     {
-                        rule.MatchLogItem(logItem, OperatorManager.GetInstance().Operators);
+                        if (rule.Target.Equals(source.Key))
+                            rule.MatchLogItem(logItem, OperatorManager.GetInstance().Operators);
                     }
                 }
             }
